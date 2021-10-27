@@ -36,3 +36,5 @@ lerna-debug.log*
 
 /.eslintrc.js
 /db.sqlite
+/db.sqlite-shm
+/db.sqlite-wal
