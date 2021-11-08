@@ -16,6 +16,9 @@ import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { UserDto } from './dtos/user.dto';
 
 @Controller('auth')
+//Controller level interceptor
+//@UseInterceptors(new SerializeInterceptor(UserDto))
+@Serialize(UserDto)
 export class UsersController {
     constructor(private usersService: UsersService) {}
     @Post('/signup')
@@ -23,8 +26,6 @@ export class UsersController {
         return this.usersService.create(body.email, body.password);
     }
 
-    //@UseInterceptors(new SerializeInterceptor(UserDto))
-    @Serialize(UserDto)
     @Get('/:id')
     async findUser(@Param('id') id: string) {
         console.log('handler is running');
